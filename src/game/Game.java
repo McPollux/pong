@@ -36,7 +36,6 @@ public class Game {
                 System.out.println("Prueba otra vez: (Intentos restantes: [" + intentos + "])");
             } else {
                 System.out.println("Has fracasado, procederé a apagarte el sistema.");
-                shutdown();
             }
             bas = Integer.parseInt(lee.readLine());
             System.out.println("------------------------------------------");
@@ -54,33 +53,8 @@ public class Game {
             intentos--;
         }
 
-        shutdown();
     }
 
-    public static void shutdown() throws RuntimeException, IOException {
-        String shutdownCommand;
-        String operatingSystem = System.getProperty("os.name");
 
-        if (null == operatingSystem) {
-            throw new RuntimeException("Unsupported operating system.");
-        } else {
-            switch (operatingSystem) {
-                case "Linux":
-                case "Mac OS X":
-                    shutdownCommand = "shutdown -h now";
-                    break;
-                case "Windows":
-                case "Windows 10":
-                    shutdownCommand = "shutdo wn.exe -s -t 10";
-                    System.out.println("pip");
-                    break;
-                default:
-                    throw new RuntimeException("Unsupported operating system.");
-            }
-        }
-
-        Runtime.getRuntime().exec(shutdownCommand);
-        System.exit(0);
-    }
 
 }

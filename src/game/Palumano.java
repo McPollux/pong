@@ -7,8 +7,10 @@ public class Palumano implements Pala {
     boolean upAccel, downAccel;
     final double GRAVITY = 0.94;
     int player, x;
+    Pelota pelota;
 
-    public Palumano(int player) {
+    public Palumano(int player, Pelota pelota) {
+        this.pelota = pelota;
         upAccel = false;
         downAccel = false;
         y = 210;
@@ -30,9 +32,25 @@ public class Palumano implements Pala {
     @Override
     public void move() {
         if(upAccel){
-            yVel -= 2;
+            if (pelota.getX() < 50) {
+                if ((y >= pelota.getY() && y <= pelota.getY() - 40)) {
+                    yVel = 0;
+                } else {
+                    yVel -= 2;
+                }
+            } else {
+                yVel -= 2;
+            }
         } else if (downAccel){
-            yVel += 2;
+            if (pelota.getX() < 50) {
+                if ((y >= pelota.getY() && y <= pelota.getY() - 40)) {
+                    yVel = 0;
+                } else {
+                    yVel += 2;
+                }
+            } else {
+                yVel += 2;
+            }
         } else {
             yVel *= GRAVITY;
         }
