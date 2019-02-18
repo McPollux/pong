@@ -4,6 +4,9 @@ import java.awt.*;
 
 public class Pelota {
     double xVel, yVel, x, y;
+    
+    int height = 20;
+	int width = 20;
 
     public Pelota() {
         this.xVel = getRandomSpeed() * getRandomDirection();
@@ -36,40 +39,44 @@ public class Pelota {
 
     }
 
-    public void confirmarChoque(Pala p1, Pala p2) { //Rebote horizontal
-        if (x <= 50 && xVel < 0) {
-            if (x > 35) {
-                if (y >= p1.getY() - 10 && y <= p1.getY() + 80 + 10) { //Ese -10 y +10 representan hitbox extra añadida a la pala para mancos
-                    xVel = -xVel;
-                }
-            }
+	public void confirmarChoque(Pala p1, Pala p2) { //Rebote horizontal
 
-            if (y >= p1.getY() + 30) {
-                if (y < 0) {
-                    yVel = -yVel;
-                }
-            }
+		if (checkCollision(p1, this) || checkCollision(p2, this)) {
+			xVel = -xVel;
+		}
 
-        } else if (x >= 650 && xVel > 0) {
-            if (x < 665) {
-                if (y >= p2.getY() - 10 && y <= p2.getY() + 80 + 10) { //Ese -10 y  +10 representan hitbox extra añadida a la pala para mancos
-                    xVel = -xVel;
-                }
-            }
+		if ((x <= 50 || x >= 650) && y >= p1.getY() + 30 && y <= p2.getY() - 30) {
+			yVel = -yVel;
+		}
 
-            if (y <= p2.getY() - 30) {
-                if (y > 0) {
-                    yVel = -yVel;
-                }
-            }
+	}
+	
+	private boolean checkCollision(Pala p1, Pelota p2) {
+		return checkCollision(p1, p2, 0);
+	}
 
-        }
-    }
+	private boolean checkCollision(Pala p1, Pelota p2, float slack) {
 
-    public void draw(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.fillOval((int) x - 10, (int) y - 10, 20, 20);
-    }
+		double d1x = p2.getX() - (p1.getX() + p1.getWidth() + slack);	// d1x = b->min.x - a->max.x;
+		double d1y = p2.getY() - (p1.getY() + p1.getHeight() + slack);	// d1y = b->min.y - a->max.y;
+		double d2x = p1.getX() - (p2.getX() + p2.getWidth() + slack);	// d2x = a->min.x - b->max.x;
+		double d2y = p1.getY() - (p2.getY() + p2.getWidth() + slack);	// d2y = a->min.y - b->max.y;
+
+		if (d1x > 0.0f || d1y > 0.0f) {
+			return false;
+		} 
+
+		if (d2x > 0.0f || d2y > 0.0f) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public void draw(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.fillOval((int) x, (int) y, height, width);
+	}
 
     public double getxVel() {
         return xVel;
@@ -102,4 +109,13 @@ public class Pelota {
     public void setY(double y) {
         this.y = y;
     }
+
+	public float getWidth() {
+		return this.width;
+	}
+
+	public float getHeight() {
+		return this.height;
+	}
+    
 }
