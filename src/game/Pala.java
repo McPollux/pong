@@ -3,10 +3,12 @@ package game;
 import java.awt.*;
 
 public interface Pala {
-    public void draw(Graphics g);
-    public void move();
-    public int getY();
-	public int getX();
-	public int getWidth();
-	public int getHeight();
+
+    void draw(Graphics g);
+    void move();
+    int getY();
+	int getX();
+	int getWidth();
+	int getHeight();
+
 }

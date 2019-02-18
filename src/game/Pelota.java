@@ -5,8 +5,8 @@ import java.awt.*;
 public class Pelota {
     double xVel, yVel, x, y;
     
-    int height = 20;
-	int width = 20;
+    private int height = 20;
+    private int width = 20;
 
     public Pelota() {
         this.xVel = getRandomSpeed() * getRandomDirection();

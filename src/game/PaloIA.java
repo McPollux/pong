@@ -9,8 +9,8 @@ public class PaloIA implements Pala {
     int player, x;
     Pelota pelota;
     
-    int width = 20;
-	int height = 80;
+    private int width = 20;
+	private int height = 80;
 
     public PaloIA(int player, Pelota pelota) {
         upAccel = false;

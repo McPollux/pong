@@ -8,9 +8,9 @@ public class Palumano implements Pala {
     final double GRAVITY = 0.94;
     int player, x;
     Pelota pelota;
-    
-    int width = 20;
-	int height = 80;
+
+    private int width = 20;
+	private int height = 80;
 
     public Palumano(int player, Pelota pelota) {
         this.pelota = pelota;
