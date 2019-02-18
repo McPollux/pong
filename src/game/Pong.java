@@ -100,10 +100,10 @@ public class Pong extends Applet implements Runnable, KeyListener {
         for(;;){
             if (empezado) {
                 if (!pausado) {
+                	pelota.confirmarChoque(p1, p2);
                     p1.move();
                     p2.move();
                     pelota.move();
-                    pelota.confirmarChoque(p1, p2);
                 }
             }
                 repaint();
