@@ -75,7 +75,7 @@ public class Pelota {
 
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
-		g.fillOval((int) x, (int) y, height, width);
+		g.fillOval((int) x, (int) y, width, height);
 	}
 
     public double getxVel() {
