@@ -8,6 +8,9 @@ public class PaloIA implements Pala {
     final double GRAVITY = 0.94;
     int player, x;
     Pelota pelota;
+    
+    private int width = 20;
+	private int height = 80;
 
     public PaloIA(int player, Pelota pelota) {
         upAccel = false;
@@ -26,7 +29,7 @@ public class PaloIA implements Pala {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(x, (int)y, 20 , 80);
+        g.fillRect(x, (int)y, width , height);
     }
 
     @Override
@@ -38,4 +41,19 @@ public class PaloIA implements Pala {
     public int getY() {
         return (int)y;
     }
+    
+    @Override
+	public int getX() {
+		return x;
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
 }

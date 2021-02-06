@@ -9,6 +9,9 @@ public class Palumano implements Pala {
     int player, x;
     Pelota pelota;
 
+    private int width = 20;
+	private int height = 80;
+
     public Palumano(int player, Pelota pelota) {
         this.pelota = pelota;
         upAccel = false;
@@ -26,7 +29,7 @@ public class Palumano implements Pala {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(x, (int)y, 20 , 80);
+        g.fillRect(x, (int)y, width , height);
     }
 
     @Override
@@ -81,4 +84,20 @@ public class Palumano implements Pala {
     public int getY() {
         return (int)y;
     }
+
+	@Override
+	public int getX() {
+		return x;
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+    
 }

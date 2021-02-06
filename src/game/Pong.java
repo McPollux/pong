@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.security.Key;
 
 /**
  *
@@ -97,13 +96,13 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
     @Override
     public void run() {
-        for(;;){
+        while (true) {
             if (empezado) {
                 if (!pausado) {
+                	pelota.confirmarChoque(p1, p2);
                     p1.move();
                     p2.move();
                     pelota.move();
-                    pelota.confirmarChoque(p1, p2);
                 }
             }
                 repaint();
